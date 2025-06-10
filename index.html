@@ -10,26 +10,99 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 <body>
+
+
     <div class="dropdown">
         <button onclick="getafisha()" class="dropbtn">АФИША</button>
         <div id="afishaDropdown" class="dropdown-content">
             <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-            <a id="cinemas" class="new-btn-open-popup" onclick="cinemasPopup()">Кинотеатры</a>
-            <a id="master-classes" class="new-btn-open-popup" onclick="masterclassesPopup()">Мастер-классы</a>
-            <a id="theatre" class="new-btn-open-popup" onclick="theatrePopup()">Театры</a>
-            <a id="exhibitions" class="new-btn-open-popup" onclick="exhibitionsPopup()">Выставки</a>
-            <a id="concerts" class="new-btn-open-popup" onclick="concertsPopup()">Концерты</a>
+            <div class="category-buttons">
+                <a id="cinemas" class="new-btn-open-popupINTOafisha" onclick="openPopupINTOafisha('cinemas')">Кинотеатры</a>
+                <a id="master-classes" class="new-btn-open-popupINTOafisha" onclick="openPopupINTOafisha('master-classes')">Мастер-классы</a>
+                <a id="theatre" class="new-btn-open-popupINTOafisha" onclick="openPopupINTOafisha('theatre')">Театры</a>
+                <a id="exhibitions" class="new-btn-open-popupINTOafisha" onclick="openPopupINTOafisha('exhibitions')">Выставки</a>
+                <a id="concerts" class="new-btn-open-popupINTOafisha" onclick="openPopupINTOafisha('concerts')">Концерты</a>
+            </div>
             <a id="newevent" class="newevent-btn-open-popup" onclick="newEventPopup()">Добавить мероприятие</a>
         </div>
     </div>
+
+    <!------------>
+    <div id="cinemas-popupINTOafisha" class="popupINTOafisha">
+      <div class="popupINTOafisha-content">
+          <span class="close-popupINTOafisha" onclick="closePopupINTOafisha('cinemas')">&times;</span>
+          <h2 class="popupINTOafisha-title">Кинотеатры</h2>
+          <p class="popupINTOafisha-description">
+              Здесь вы найдете самые актуальные и интересные фильмы! 
+              Мы подготовили для вас подборку лучших кинокартин, 
+              от блокбастеров до авторского кино. 
+              Следите за обновлениями и не пропустите премьеры!
+          </p>
+      </div>
+  </div>
+
+  <div id="master-classes-popupINTOafisha" class="popupINTOafisha">
+      <div class="popupINTOafisha-content">
+          <span class="close-popupINTOafisha" onclick="closePopupINTOafisha('master-classes')">&times;</span>
+          <h2 class="popupINTOafisha-title">Мастер-классы</h2>
+          <p class="popupINTOafisha-description">
+              Уникальная возможность научиться чему-то новому! 
+              У нас собраны мастер-классы от профессионалов 
+              в различных областях: от кулинарии до искусства. 
+              Раскройте свой творческий потенциал!
+          </p>
+      </div>
+  </div>
+
+  <div id="theatre-popupINTOafisha" class="popupINTOafisha">
+      <div class="popupINTOafisha-content">
+          <span class="close-popupINTOafisha" onclick="closePopupINTOafisha('theatre')">&times;</span>
+          <h2 class="popupINTOafisha-title">Театры</h2>
+          <p class="popupINTOafisha-description">
+              Погрузитесь в мир театрального искусства! 
+              Мы представляем лучшие постановки от классики 
+              до современных экспериментальных спектаклей. 
+              Эмоции, драма, комедия - выбирайте то, что близко вам!
+          </p>
+      </div>
+  </div>
+
+  <div id="exhibitions-popupINTOafisha" class="popupINTOafisha">
+      <div class="popupINTOafisha-content">
+          <span class="close-popupINTOafisha" onclick="closePopupINTOafisha('exhibitions')">&times;</span>
+          <h2 class="popupINTOafisha-title">Выставки</h2>
+          <p class="popupINTOafisha-description">
+              Откройте для себя мир искусства и культуры! 
+              Наша подборка включает художественные, 
+              исторические и современные выставки. 
+              Каждая экспозиция - это уникальное путешествие.
+          </p>
+      </div>
+  </div>
+
+  <div id="concerts-popupINTOafisha" class="popupINTOafisha">
+      <div class="popupINTOafisha-content">
+          <span class="close-popupINTOafisha" onclick="closePopupINTOafisha('concerts')">&times;</span>
+          <h2 class="popupINTOafisha-title">Концерты</h2>
+          <p class="popupINTOafisha-description">
+              Музыка, которая вдохновляет! Самые горячие 
+              концерты от популярных артистов до джазовых 
+              и классических исполнителей. Живой звук, 
+              незабываемая атмосфера - все для вас!
+          </p>
+      </div>
+  </div>
 
     <div class="dropdownnew">
         <button onclick="logsignin()" class="dropbtn">ВОЙТИ НА САЙТ</button>
         <div id="loginDropdown" class="dropdown-content">
             <button id="sign-up" class="new-btn-open-popup" onclick="togglePopup()">Авторизация</button>         
-            <button id="sign-up" class="new-btn-open-popup" onclick="toggle2Popup()">Регистрация</button>    
+            <button id="sign-up" class="new-btn-ogpen-popup" onclick="toggle2Popup()">Регистрация</button>    
         </div>
     </div>
+
+
+
 
     <div class="mytext1337">
         <h2>Добро пожаловать на Веб-Афишу!</h2>
@@ -68,22 +141,6 @@
             <button class="btn-close-popup" onclick="toggle6Popup()">Закрыть</button>
         </div>
     </div>
-    <!-- <a id="newevent" class="newevent-btn-open-popup" onclick="newEventPopup()">Добавить мероприятие</a><a id="newevent" class="newevent-btn-open-popup" onclick="newEventPopup()">Добавить мероприятие</a> -->
-    
-
-
-    <!-- <div id="popupOverlayAuthorized" class="overlay-container" style="display: none;">
-        <div class="popup-box">
-            <h2 style="color: Purple;">Вы успешно прошли авторизацию!</h2>
-            <form class="form-container">
-                <label class="container">Запомнить пароль?
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-            </form>
-            <button class="btn-close-popup" onclick="closeAuthorizedPopup()">Закрыть</button>
-        </div>
-    </div> -->
     
     
     <div id="popupOverlayReg" class="overlay-container">
@@ -124,36 +181,6 @@
             <button class="btn-close-popup" onclick="toggle2Popup()">Закрыть</button>
         </div>
     </div>
-
-    <!-- <div class="button-container">
-        <div class="button-container">
-            <div class="image-wrapper">
-                <a href="https://ivdrama.ru/afisha/" target="_blank">
-                    <button type="button">
-                        <img src="images/dt.jpg" alt="Иконка Ивановского Драм-Театра">
-                    </button>
-                </a>
-                <p style="color: #9932CC; text-shadow: 2px 2px 5px #6A5ACD">Ивановский драм-театр</p>
-            </div>
-            <div class="image-wrapper">
-                <a href="https://ivdrama.ru/afisha/" target="_blank">
-                    <button type="button">
-                        <img src="images/lodz.jpg" alt="Иконка Кинотеатр Лодзь">
-                    </button>
-                </a>
-            <p style="color: #9932CC; text-shadow: 2px 2px 5px #6A5ACD">Кинотеатр Лодзь</p>
-        </div>
-    </div> -->
-    
-    <!-- <div class="dropdown">
-        <button onclick="getactual()" class="dropbtn" id="actual">Актуальное</button>
-        <div id="actualDropdown" class="dropdown-content">
-            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-            <a id="cheburashka" class="new-btn-open-popup" onclick="cheburashkaPopup()">Чебурашка в КИНО</a>
-            <a id="basta" class="new-btn-open-popup" onclick="bastaPopup()">Концерт БАСТЫ в Иваново</a>
-            <a id="buratino" class="new-btn-open-popup" onclick="buratinoPopup()">Спектакль Буратино</a>
-        </div>
-    </div> -->
 
     <div id="popupOverlayCheburashka" class="overlay-container">
         <!-- <div class="button-container"> -->
@@ -208,7 +235,6 @@
             </div>
         <!-- </div> -->
     </div>
-        
 </body>
 </html>
 

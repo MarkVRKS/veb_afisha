@@ -60,14 +60,15 @@ body {
 }
 
 .dropdownnew {
-    position: relative;
+    background-color: #e08dc7;
+    position: fixed; /* Изменено на fixed для точного позиционирования */
+    top: 10px; /* Отступ сверху */
+    right: 20px; /* Отступ справа, можно настроить */
     display: inline-block;
-    float: right;
-    right: 42px;
-    top: 10px;
     font-family: 'Playfair Display', serif;
-
+    z-index: 1000; /* Добавлено для гарантии видимости */
 }
+
 
 .dropdown-content {
     display: none;
@@ -368,4 +369,66 @@ textarea.form-input {
 }
 
 /* Всплывающее окно успешной авторизации */
+
+/* Вкладки в афише */
+
+.popupINTOafisha {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0,0,0,0.7);
+          z-index: 1000;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .popupINTOafisha-content {
+          background-color: white;
+          padding: 30px;
+          border-radius: 15px;
+          width: 500px;
+          max-width: 90%;
+          text-align: center;
+          position: relative;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      .close-popupINTOafisha {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          font-size: 24px;
+          cursor: pointer;
+          color: #888;
+      }
+
+      .popupINTOafisha-title {
+          color: #333;
+          margin-bottom: 20px;
+      }
+
+      .popupINTOafisha-description {
+          color: #666;
+          line-height: 1.6;
+      }
+      
+      .new-btn-open-popupINTOafisha {
+          display: inline-block;
+          margin: 10px;
+          padding: 10px 20px;
+          background-color: #e08dc7;
+          color: white;
+          text-decoration: none;
+          border-radius: 8px;
+          transition: background-color 0.3s ease;
+          cursor: pointer;
+      }
+
+      .new-btn-open-popupINTOafisha.active {
+          background-color: #FFC0CB;
+          color: white;
+      }
 

@@ -132,3 +132,25 @@ function toggle6Popup() {
   overlay.classList.toggle('show');
 }
 // закрываев вкладки по пустому пространству
+
+
+function openPopupINTOafisha(category) {
+          document.getElementById(`${category}-popupINTOafisha`).style.display = 'flex';
+      }
+
+      function closePopupINTOafisha(category) {
+          document.getElementById(`${category}-popupINTOafisha`).style.display = 'none';
+      }
+
+      // Закрытие popupINTOafisha при клике вне области
+      window.onclick = function(event) {
+          const popupINTOafishas = document.querySelectorAll('.popupINTOafisha');
+          popupINTOafishas.forEach(popupINTOafisha => {
+              if (event.target == popupINTOafisha) {
+                  popupINTOafisha.style.display = 'none';
+              }
+          });
+      }
+
+
+
