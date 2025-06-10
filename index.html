@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веб-Афиша</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+    <div class="dropdown">
+        <button onclick="getafisha()" class="dropbtn">АФИША</button>
+        <div id="afishaDropdown" class="dropdown-content">
+            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <a id="cinemas" class="new-btn-open-popup" onclick="cinemasPopup()">Кинотеатры</a>
+            <a id="master-classes" class="new-btn-open-popup" onclick="masterclassesPopup()">Мастер-классы</a>
+            <a id="theatre" class="new-btn-open-popup" onclick="theatrePopup()">Театры</a>
+            <a id="exhibitions" class="new-btn-open-popup" onclick="exhibitionsPopup()">Выставки</a>
+            <a id="concerts" class="new-btn-open-popup" onclick="concertsPopup()">Концерты</a>
+            <a id="newevent" class="newevent-btn-open-popup" onclick="newEventPopup()">Добавить мероприятие</a>
+        </div>
+    </div>
+
+    <div class="dropdownnew">
+        <button onclick="logsignin()" class="dropbtn">ВОЙТИ НА САЙТ</button>
+        <div id="loginDropdown" class="dropdown-content">
+            <button id="sign-up" class="new-btn-open-popup" onclick="togglePopup()">Авторизация</button>         
+            <button id="sign-up" class="new-btn-open-popup" onclick="toggle2Popup()">Регистрация</button>    
+        </div>
+    </div>
+
+    <div class="mytext1337">
+        <h2>Добро пожаловать на Веб-Афишу!</h2>
+    </div>
+    <div class="mytext1337">
+        <h2>Доcтупные мероприятия</h2>
+    </div>
+
+    
+
+    <div id="popupOverlayLogin" class="overlay-container">
+        <div class="popup-box">
+            <h2 style="color: Purple;">Авторизация</h2>
+            <form class="form-container" action="/login" method="POST">
+                <label class="form-label" for="loginName">Имя пользователя:</label>
+                <input class="form-input" type="text" placeholder="Введите ваше имя пользователя" id="loginName" name="name" required>
+    
+                <label class="form-label" for="loginPassword">Пароль:</label>
+                <input class="form-input" type="password" placeholder="Введите ваш пароль" id="loginPassword" name="password" required>
+    
+                <button class="btn-submit" type="submit" onclick="showAuthorizedPopup()">Подтвердить</button>
+            </form>
+            <button class="btn-close-popup" onclick="togglePopup()">Закрыть</button>
+        </div>
+    </div>
+
+    <div id="popupOverlayNewEvent" class="overlay-container">
+        <div class="popup-box large-popup">
+            <h2 style="color: Purple;">Добавление нового мероприятия на Веб-Афишу</h2>
+            <form class="form-container" action="/login" method="POST">
+                <label class="form-label" for="titleEvent">Название мероприятия</label>
+                <input class="form-input" type="text" font="Gill Sans" placeholder="Введите название мероприятия" id="titleEvent" name="name" required>
+                
+                <label class="form-label" for="descriptionEvent">Описание мероприятия</label>
+                <textarea class="form-input" placeholder="Введите описание мероприятия" id="descriptionEvent" name="description" required rows="5" style="resize: vertical;"></textarea>            </form>
+            <button class="btn-close-popup" onclick="toggle6Popup()">Закрыть</button>
+        </div>
+    </div>
+    <!-- <a id="newevent" class="newevent-btn-open-popup" onclick="newEventPopup()">Добавить мероприятие</a><a id="newevent" class="newevent-btn-open-popup" onclick="newEventPopup()">Добавить мероприятие</a> -->
+    
+
+
+    <!-- <div id="popupOverlayAuthorized" class="overlay-container" style="display: none;">
+        <div class="popup-box">
+            <h2 style="color: Purple;">Вы успешно прошли авторизацию!</h2>
+            <form class="form-container">
+                <label class="container">Запомнить пароль?
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+            </form>
+            <button class="btn-close-popup" onclick="closeAuthorizedPopup()">Закрыть</button>
+        </div>
+    </div> -->
+    
+    
+    <div id="popupOverlayReg" class="overlay-container">
+        <div class="popup-box">
+            <h2 style="color: Purple;">Регистрация</h2>
+            <form class="form-container" action="/register" method="POST">
+                <label class="form-label" for="registerName">Имя пользователя:</label>
+                <input class="form-input" 
+                        type="text" 
+                        placeholder="Введите ваше имя пользователя" 
+                        id="registerName" 
+                        name="name" required>
+    
+                <label class="form-label" for="email">E-mail:</label>
+                <input class="form-input"
+                        type="email" 
+                        placeholder="Введите ваш почтовый адрес" 
+                        id="email" 
+                        name="email" required>
+    
+                <label class="form-label" for="registerPassword">Пароль:</label>
+                <input class="form-input" 
+                        type="password" 
+                        placeholder="Введите ваш пароль" 
+                        id="registerPassword" 
+                        name="password" required>
+    
+                <label class="form-label" for="registerConfirmPassword">Подтвердите пароль:</label>
+                <input class="form-input" 
+                        type="password"
+                        placeholder="Подтверждение" 
+                        id="registerConfirmPassword" 
+                        name="submitpassword" required>
+    
+                <button class="btn-submit" type="submit">Подтвердить</button>
+            </form>
+
+            <button class="btn-close-popup" onclick="toggle2Popup()">Закрыть</button>
+        </div>
+    </div>
+
+    <!-- <div class="button-container">
+        <div class="button-container">
+            <div class="image-wrapper">
+                <a href="https://ivdrama.ru/afisha/" target="_blank">
+                    <button type="button">
+                        <img src="images/dt.jpg" alt="Иконка Ивановского Драм-Театра">
+                    </button>
+                </a>
+                <p style="color: #9932CC; text-shadow: 2px 2px 5px #6A5ACD">Ивановский драм-театр</p>
+            </div>
+            <div class="image-wrapper">
+                <a href="https://ivdrama.ru/afisha/" target="_blank">
+                    <button type="button">
+                        <img src="images/lodz.jpg" alt="Иконка Кинотеатр Лодзь">
+                    </button>
+                </a>
+            <p style="color: #9932CC; text-shadow: 2px 2px 5px #6A5ACD">Кинотеатр Лодзь</p>
+        </div>
+    </div> -->
+    
+    <!-- <div class="dropdown">
+        <button onclick="getactual()" class="dropbtn" id="actual">Актуальное</button>
+        <div id="actualDropdown" class="dropdown-content">
+            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <a id="cheburashka" class="new-btn-open-popup" onclick="cheburashkaPopup()">Чебурашка в КИНО</a>
+            <a id="basta" class="new-btn-open-popup" onclick="bastaPopup()">Концерт БАСТЫ в Иваново</a>
+            <a id="buratino" class="new-btn-open-popup" onclick="buratinoPopup()">Спектакль Буратино</a>
+        </div>
+    </div> -->
+
+    <div id="popupOverlayCheburashka" class="overlay-container">
+        <!-- <div class="button-container"> -->
+            <div class="popup-box">
+                <h2 style="color: Purple;">Чебурашка в КИНО</h2>
+                <div class="image-wrapper">
+                    <a href="https://www.kinopoisk.ru/film/4370148/" target="_blank">
+                        <button type="button">
+                            <img src="images/chebu.png" alt="Чебурашка">
+                        </button>
+                    </a>
+                    <p style="color: #9932CC; text-shadow: 2px 2px 5px #6A5ACD">Ивановский драм-театр</p>
+                    <h4 style="color: Purple;">Нажмите по обложке, чтобы узнать стоимость билетов</h4>
+                </div>
+                <button class="btn-close-popup" onclick="toggle3Popup()">Закрыть</button>
+            </div>
+        <!-- </div> -->
+    </div>
+
+    <div id="popupOverlayBasta" class="overlay-container">
+        <!-- <div class="button-container"> -->
+            <div class="popup-box">
+                <h2 style="color: Purple;">Концерт Басты в Иваново</h2>
+                <div class="image-wrapper">
+                    <a href="https://bastatour.ru/" target="_blank">
+                        <button type="button">
+                            <img src="images/basta.jpg" alt="Концерт Басты">
+                        </button>
+                    </a>
+                    <p style="color: #9932CC; text-shadow: 2px 2px 5px #6A5ACD">Ивановский драм-театр</p>
+                    <h4 style="color: Purple;">Нажмите по обложке, чтобы узнать стоимость билетов</h4>
+                </div>
+                <button class="btn-close-popup" onclick="toggle4Popup()">Закрыть</button>
+            </div>
+        <!-- </div> -->
+    </div>
+
+    <div id="popupOverlayBuratino" class="overlay-container">
+        <!-- <div class="button-container"> -->
+            <div class="popup-box">
+                <h2 style="color: Purple;">Спектакль Буратино</h2>
+                <div class="image-wrapper">
+                    <a href="https://www.ivanovokoncert.ru/shows/1585-BURATINO" target="_blank">
+                        <button type="button">
+                            <img src="images/burat.jpg" alt="Буратино">
+                        </button>
+                    </a>
+                    <p style="color: #9932CC; text-shadow: 2px 2px 5px #6A5ACD">Ивановский драм-театр</p>
+                    <h4 style="color: Purple;">Нажмите по обложке, чтобы узнать стоимость билетов</h4>
+                </div>
+                <button class="btn-close-popup" onclick="toggle5Popup()">Закрыть</button>
+            </div>
+        <!-- </div> -->
+    </div>
+        
+</body>
+</html>
+
+

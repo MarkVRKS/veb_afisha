@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;  /* применяем box-sizing ко всему */
+}
+
+body {
+    background-image: url(images/bg.jpg);
+    background-size: cover;
+    margin: 0; 
+}
+
+.dropbtn {
+    background-color: #8a2be2; /* Более насыщенный темно-сиреневый */
+    color: white;
+    padding: 16px 24px; /* Немного больше горизонтального padding */
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    border-radius: 8px; /* Скругленные углы */
+    text-transform: uppercase; /* Заглавные буквы */
+    letter-spacing: 1px; /* Межбуквенный интервал */
+    transition: all 0.3s ease; /* Плавный переход */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Легкая тень */
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #6a3093; /* Более темный оттенок при наведении */
+    transform: translateY(-2px); /* Легкий подъем */
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15); /* Усиленная тень при наведении */
+}
+
+.dropbtn:active {
+    transform: translateY(1px); /* Эффект нажатия */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Уменьшенная тень при нажатии */
+}
+
+#myInput {   
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {
+    outline: 3px solid #ddd;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    top: 10px;
+    left: 42px;
+    font-family: 'Playfair Display', serif;
+
+}
+
+.dropdownnew {
+    position: relative;
+    display: inline-block;
+    float: right;
+    right: 42px;
+    top: 10px;
+    font-family: 'Playfair Display', serif;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.151);
+    min-width: 160px;
+    box-shadow: 0 0 16 0 rgba(0, 0, 0, 0, 0.151);
+    z-index: 1;
+    overflow-x: hidden;
+    width: auto;
+    text-align: center;
+    padding: 10px;
+}
+
+/* текст в кнопках */
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {
+    background-color: #ddd;
+}
+.dropdownnew button:hover {
+    background-color: #bd92b7;
+}
+
+.show {
+    display: block;
+}
+
+.button-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+
+.btn-open-popup {
+    margin: 5px 0;
+    width: 100%; 
+}
+
+.input-container {
+    margin-bottom: 10px;
+}
+
+.mytext h2 {
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Playfair Display', serif;   
+}
+
+.mytext1337 h2 {
+          text-align: center;
+          font-size: 28px;
+          font-family: 'Playfair Display', serif;
+          color: #8a2be2; 
+          font-weight: 700;
+          letter-spacing: 1px; 
+          text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
+          padding: 10px;
+          transition: all 0.3s ease;
+      }
+
+.mytext1337 h2:hover {
+          color: #6a3093;
+          transform: scale(1.02);
+      }
+
+.button-container {
+    display: flex; 
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+}
+
+.image-wrapper {
+    text-align: center; 
+}
+
+img {
+    display: block;
+    width: 160px;
+    height: 160px;
+    border: none;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0; 
+    cursor: pointer; 
+}
+
+.new-btn-open-popup {
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: plum;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.new-btn-open-popup:hover {
+    background-color: rgba(240, 107, 173, 0.6) ;
+}
+
+.newevent-btn-open-popup {
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: rgb(213, 121, 213);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.newevent-btn-open-popup:hover {
+    background-color: rgba(206, 112, 159, 0.6) ;
+}
+
+.overlay-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup-box {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    width: 320px;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #444;
+    text-align: left;
+}
+
+.form-input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-submit,.btn-close-popup {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-submit {
+    background-color: plum;
+    color: #fff;
+}
+
+.btn-close-popup {
+    margin-top: 12px;
+    background-color: plum;
+    color: #fff;
+}
+
+.btn-submit:hover,
+.btn-close-popup:hover {
+    background-color: plum;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.overlay-container.show {
+    display: flex;
+    opacity: 1;
+}
+
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #000;
+    opacity: 1;
+    z-index: 9999;
+  }
+
+.btn_act {
+    background:    plum;
+    border-radius: 400px;
+    padding:       20px 45px;
+    color:         #ffffff;
+    display:       inline-block;
+    font:          normal bold 26px/1 "Open Sans", sans-serif;
+    text-align:    center;
+    font-family: 'Playfair Display', serif;
+
+}
+
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+  
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+  
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.actual {
+    background: plum; 
+    border-radius: 400px;
+    padding: 20px 45px;
+    color: #ffffff; 
+    display: inline-block; 
+    font: normal bold 26px/1 Open Sans, sans-serif;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+/* увеличим чуть-чуть окошечко добавления мероприятия */
+.large-popup {
+    width: 800px;
+    max-width: 90%; 
+    height: auto;
+    padding: 20px;
+}
+
+.form-input {
+    width: 100%; /* Убедитесь, что поле занимает всю ширину контейнера */
+    padding: 10px; /* Добавьте внутренние отступы */
+    border: 1px solid #ccc; /* Граница */
+    border-radius: 5px; /* Закруглите углы */
+    box-sizing: border-box; /* Учитывайте паддинг и границы в общей ширине */
+}
+
+textarea.form-input {
+    height: 150px; /* Установите высоту по умолчанию для текстового поля */
+    resize: vertical; /* Позвольте пользователю менять размер только по вертикали */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Всплывающее окно успешной авторизации */
+
