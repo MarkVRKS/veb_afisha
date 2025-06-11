@@ -1,0 +1,34 @@
+.eventCard {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.eventCard:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.eventCardImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.eventCardContent {
+  padding: 15px;
+}
+
+.eventCardContent h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.eventCardDetails {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #666;
+}

@@ -61,12 +61,13 @@ body {
 
 .dropdownnew {
     background-color: #e08dc7;
-    position: fixed; /* Изменено на fixed для точного позиционирования */
-    top: 10px; /* Отступ сверху */
-    right: 20px; /* Отступ справа, можно настроить */
+    position: relative;
     display: inline-block;
+    float: right;
+    right: 42px;
+    top: 10px;
     font-family: 'Playfair Display', serif;
-    z-index: 1000; /* Добавлено для гарантии видимости */
+
 }
 
 
